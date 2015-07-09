@@ -1,0 +1,10 @@
+dev:
+  image: iojs:2
+  working_dir: /usr/src/app
+  volumes:
+    - ".:/usr/src/app"
+  command: "npm run watch"
+  env_file: .env
+  environment:
+    - NTB_API_ENV=dev
+    - NTB_USER_AGENT=turbasen.js/alpha
