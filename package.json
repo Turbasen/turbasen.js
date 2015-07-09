@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test.js",
-    "hint": "./node_modules/.bin/jshint index.js test.js",
+    "hint": "./node_modules/.bin/jshint index.js test.js examples/",
     "watch": "./node_modules/.bin/mocha -w -R progress test.js"
   },
   "repository": {
