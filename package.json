@@ -1,0 +1,40 @@
+{
+  "name": "turbasen.js",
+  "version": "1.0.0",
+  "description": "Node.JS-client for Nasjonal Turbase",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js",
+    "hint": "./node_modules/.bin/jshint index.js test.js",
+    "watch": "./node_modules/.bin/mocha -w -R progress test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Turbasen/turbasen.js.git"
+  },
+  "keywords": [
+    "DNT",
+    "Nasjonal Turbase",
+    "hiking",
+    "trekking",
+    "Norge",
+    "Norway"
+  ],
+  "author": "Hans Kristian Flaatten <hans.kristian.flaatten@turistforeningen.no>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Turbasen/turbasen.js/issues"
+  },
+  "homepage": "https://github.com/Turbasen/turbasen.js",
+  "devDependencies": {
+    "jshint": "~2",
+    "mocha": "~2"
+  },
+  "dependencies": {
+    "request": "~2"
+  },
+  "engines": {
+    "node": ">=0.10",
+    "iojs": ">=1.0.0"
+  }
+}
