@@ -4,7 +4,7 @@
 [![NPM downloads](https://img.shields.io/npm/dm/turbasen.svg "NPM downloads")](https://www.npmjs.com/package/turbasen)
 [![NPM version](https://img.shields.io/npm/v/turbasen.svg "NPM version")](https://www.npmjs.com/package/turbasen)
 [![Node version](https://img.shields.io/node/v/turbasen.svg "Node version")](https://www.npmjs.com/package/turbasen)
-[![Dependency status](https://img.shields.io/david/turistforeningen/turbasen.js.svg "Dependency status")](https://david-dm.org/turistforeningen/turbasen.js)
+[![Dependency status](https://img.shields.io/david/Turbasen/turbasen.js.svg "Dependency status")](https://david-dm.org/Turbasen/turbasen.js)
 
 Node.JS-client for [Nasjonal Turbase](http://www.nasjonalturbase.no).
 
