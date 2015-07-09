@@ -1,5 +1,5 @@
 {
-  "name": "turbasen.js",
+  "name": "turbasen",
   "version": "1.0.0",
   "description": "Node.JS-client for Nasjonal Turbase",
   "main": "index.js",
