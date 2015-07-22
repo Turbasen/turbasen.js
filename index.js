@@ -1,7 +1,7 @@
 module.exports.conf = {
   API_KEY: process.env.NTB_API_KEY,
   API_ENV: process.env.NTB_API_ENV || 'api',
-  USER_AGENT: process.env.NTB_USER_AGENT || require('package.json').version
+  USER_AGENT: process.env.NTB_USER_AGENT || require('./package.json').version
 };
 
 module.exports._requestDefaults = function() {
