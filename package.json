@@ -1,6 +1,6 @@
 {
   "name": "turbasen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node.JS-client for Nasjonal Turbase",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,6 @@
   },
   "engines": {
     "node": ">=0.10",
-    "iojs": ">=1.0.0"
+    "iojs": ">=1.0.1"
   }
 }
