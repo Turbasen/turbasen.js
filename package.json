@@ -1,6 +1,6 @@
 {
   "name": "turbasen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.JS-client for Nasjonal Turbase",
   "main": "index.js",
   "scripts": {
