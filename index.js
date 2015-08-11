@@ -28,28 +28,28 @@ var request = module.exports._requestDefaults();
   'turer'
 ].forEach(function(type) {
   module.exports[type] = function(params, callback) {
-    if (!callback) { return request.get({url: type, qs: params}); }
-    request.get({url: type, qs: params}, callback);
+    if (!callback) { return request.get({url: encodeURIComponent(type), qs: params}); }
+    request.get({url: encodeURIComponent(type), qs: params}, callback);
   };
 
   module.exports[type].post = function(data, callback) {
-    if (!callback) { return request.post({url: type, body: data}); }
-    request.post({url: type, body: data}, callback);
+    if (!callback) { return request.post({url: encodeURIComponent(type), body: data}); }
+    request.post({url: encodeURIComponent(type), body: data}, callback);
   };
 
   module.exports[type].get = function(id, callback) {
-    if (!callback) { return request.get({url: type + '/' + id}); }
-    request.get({url: type + '/' + id}, callback);
+    if (!callback) { return request.get({url: encodeURIComponent(type) + '/' + id}); }
+    request.get({url: encodeURIComponent(type) + '/' + id}, callback);
   };
 
   module.exports[type].put = function(id, data, callback) {
-    if (!callback) { return request.put({url: type + '/' + id, body: data}); }
-    request.put({url: type + '/' + id, body: data}, callback);
+    if (!callback) { return request.put({url: encodeURIComponent(type) + '/' + id, body: data}); }
+    request.put({url: encodeURIComponent(type) + '/' + id, body: data}, callback);
   };
 
   module.exports[type].patch = function(id, data, callback) {
-    if (!callback) { return request.patch({url: type + '/' + id, body: data}); }
-    request.patch({url: type + '/' + id, body: data}, callback);
+    if (!callback) { return request.patch({url: encodeURIComponent(type) + '/' + id, body: data}); }
+    request.patch({url: encodeURIComponent(type) + '/' + id, body: data}, callback);
   };
 });
 
