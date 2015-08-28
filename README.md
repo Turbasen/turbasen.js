@@ -27,32 +27,32 @@ var turbasen = require('turbasen');
 
 ### Object Types
 
-| Data Type  | API object                |
+| Data Type  | API object                |
 |------------|---------------------------|
 | Areas      | `turbasen.områder.…`      |
 | Photos     | `turbasen.bilder.…`       |
 | Places     | `turbasen.steder.…`       |
-| Trips      | `turbasen.turer.…`        |
-| Activities | `turbasen.aktiviteter.…`  |
-| Groups     | `turbasen.grupper.…`      |
+| Trips      | `turbasen.turer.…`        |
+| Activities | `turbasen.aktiviteter.…`  |
+| Groups     | `turbasen.grupper.…`      |
 
 ### Status Codes
 
-| Code  | Explanation                    |
+| Code  | Explanation                    |
 |-------|--------------------------------|
 | `200` | *Everything is OK*             |
-| `201` | *Object created*               |
+| `201` | *Object created*               |
 | `204` | *As `200` without any body*    |
 | `400` | Body is missing                |
-| `400` | ObjectId is invalid            |
-| `401` | Credentials are invalid        |
-| `403` | Rate limit is exceeded         |
-| `403` | Request was denied             |
-| `404` | Resource was not found         |
-| `404` | Object was not found           |
-| `405` | HTTP method `X` is not allowed |
+| `400` | ObjectId is invalid            |
+| `401` | Credentials are invalid        |
+| `403` | Rate limit is exceeded         |
+| `403` | Request was denied             |
+| `404` | Resource was not found         |
+| `404` | Object was not found           |
+| `405` | HTTP method `X` is not allowed |
 | `422` | Body should be a JSON Hash     |
-| `422` | Data validation failed         | 
+| `422` | Data validation failed         |
 | `500` | Internal server error          |
 
 ### Configure
