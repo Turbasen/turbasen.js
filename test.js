@@ -56,6 +56,7 @@ describe('api', function() {
       assert.equal(typeof turbasen[type], 'function');
       assert.equal(typeof turbasen[type].post, 'function');
       assert.equal(typeof turbasen[type].get, 'function');
+      assert.equal(typeof turbasen[type].delete, 'function');
       assert.equal(typeof turbasen[type].put, 'function');
       assert.equal(typeof turbasen[type].patch, 'function');
     });
