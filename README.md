@@ -115,6 +115,20 @@ turbasen.bilder.get(id, function(err, res, body) {
 });
 ```
 
+### Delete Object
+
+```js
+turbasen.bilder.delete(id, function(err, res, body) {
+  if (err) { throw err; }
+
+  if (res.statusCode !== 204) {
+    console.error(body.message);
+  } else {
+    console.log('Document deleted successfully!');
+  }
+});
+```
+
 ### Put Object
 
 ```
