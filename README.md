@@ -131,7 +131,7 @@ turbasen.bilder.delete(id, function(err, res, body) {
 
 ### Put Object
 
-```
+```js
 turbasen.bilder.put(id, object, function(err, res, body) {
   if (err) { throw err; }
 
@@ -146,7 +146,7 @@ turbasen.bilder.put(id, object, function(err, res, body) {
 
 ### Patch Object
 
-```
+```js
 turbasen.bilder.patch(id, object, function(err, res, body) {
   if (err) { throw err; }
 
