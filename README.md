@@ -86,7 +86,7 @@ turbasen.områder(query, function(err, res, body) {
 });
 ```
 
-### Post Object
+### Create Object
 
 ```js
 turbasen.bilder.post(object, function(err, res, body) {
