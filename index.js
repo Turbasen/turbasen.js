@@ -43,8 +43,8 @@ var request = module.exports._requestDefaults();
   };
 
   module.exports[type].delete = function(id, callback) {
-    if (!callback) { return request.delete({url: encodeURIComponent(type) + '/' + id}); }
-    request.delete({url: encodeURIComponent(type) + '/' + id}, callback);
+    if (!callback) { return request.del({url: encodeURIComponent(type) + '/' + id}); }
+    request.del({url: encodeURIComponent(type) + '/' + id}, callback);
   };
 
   module.exports[type].put = function(id, data, callback) {
