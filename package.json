@@ -4,7 +4,7 @@
   "description": "Node.JS-client for Nasjonal Turbase",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js test.js examples/",
+    "lint": "eslint index.js test.js",
     "test": "mocha -R tap test.js",
     "watch": "mocha -w -R progress test.js"
   },

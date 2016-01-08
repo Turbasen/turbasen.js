@@ -1,30 +1,32 @@
-var assert = require('assert');
-var turbasen = require('.');
+'use strict';
+
+const assert = require('assert');
+const turbasen = require('.');
 
 process.env.NODE_ENV = 'test';
 
-describe('conf', function() {
-  it('sets default config from environment', function() {
+describe('conf', function describe() {
+  it('sets default config from environment', function it() {
     assert.equal(turbasen.conf.API_KEY, process.env.NTB_API_KEY);
     assert.equal(turbasen.conf.API_ENV, process.env.NTB_API_ENV);
     assert.equal(turbasen.conf.USER_AGENT, process.env.NTB_USER_AGENT);
   });
 });
 
-describe('configure()', function() {
-  afterEach(function() {
+describe('configure()', function describe() {
+  afterEach(function afterEach() {
     turbasen.configure({
       API_KEY: process.env.NTB_API_KEY,
       API_ENV: process.env.NTB_API_ENV,
-      USER_AGENT: process.env.NTB_USER_AGENT
+      USER_AGENT: process.env.NTB_USER_AGENT,
     });
   });
 
-  it('updates conf variables', function() {
+  it('updates conf variables', function it() {
     turbasen.configure({
       API_KEY: 'foo',
       API_ENV: 'bar',
-      USER_AGENT: 'baz'
+      USER_AGENT: 'baz',
     });
 
     assert.equal(turbasen.conf.API_KEY, 'foo');
@@ -32,27 +34,25 @@ describe('configure()', function() {
     assert.equal(turbasen.conf.USER_AGENT, 'baz');
   });
 
-  it.skip('regenares request object', function() {
-
-  });
+  it('regenares request object');
 });
 
-describe('_requestDefaults()', function() {
-  it('returns request object', function() {
+describe('_requestDefaults()', function describe() {
+  it('returns request object', function it() {
     assert.equal(typeof turbasen._requestDefaults(), 'function');
   });
 });
 
-describe('api', function() {
-  it('exposes data types functions', function() {
+describe('api', function describe() {
+  it('exposes data types functions', function it() {
     [
       'aktiviteter',
       'bilder',
       'grupper',
       'områder',
       'steder',
-      'turer'
-    ].forEach(function(type) {
+      'turer',
+    ].forEach(function forEach(type) {
       assert.equal(typeof turbasen[type], 'function');
       assert.equal(typeof turbasen[type].each, 'function');
       assert.equal(typeof turbasen[type].post, 'function');
@@ -63,19 +63,19 @@ describe('api', function() {
     });
   });
 
-  it('exposes each document itterator function', function(done) {
+  it('exposes each document itterator function', function it(done) {
     this.timeout(10000);
 
-    var counter = 0;
-    var opts = {
+    let counter = 0;
+    const opts = {
       tags: 'Bretur',
-      limit: 10
+      limit: 10,
     };
 
-    turbasen.turer.each(opts, function(item, index, next) {
+    turbasen.turer.each(opts, function eachItem(item, index, next) {
       counter++;
       process.nextTick(next);
-    }, function(err) {
+    }, function eachDone(err) {
       assert.ifError(err);
       assert.equal(counter, 46);
 
@@ -84,9 +84,9 @@ describe('api', function() {
   });
 });
 
-describe('near.js', function() {
-  it('returns cabins near coornidate', function(done) {
-    require('./examples/near').on('data', function(data) {
+describe('near.js', function describe() {
+  it('returns cabins near coornidate', function it(done) {
+    require('./examples/near').on('data', function on(data) {
       assert.equal(data.documents[0].navn, 'Selhamar');
       assert.equal(data.documents[1].navn, 'Åsedalen');
       assert.equal(data.documents[2].navn, 'Torvedalshytta');
