@@ -4,9 +4,9 @@
   "description": "Node.JS-client for Nasjonal Turbase",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test.js",
-    "hint": "./node_modules/.bin/jshint index.js test.js examples/",
-    "watch": "./node_modules/.bin/mocha -w -R progress test.js"
+    "lint": "eslint index.js test.js examples/",
+    "test": "mocha -R tap test.js",
+    "watch": "mocha -w -R progress test.js"
   },
   "repository": {
     "type": "git",
@@ -27,11 +27,12 @@
   },
   "homepage": "https://github.com/Turbasen/turbasen.js",
   "devDependencies": {
-    "jshint": "~2",
-    "mocha": "~2"
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^3.1.0",
+    "mocha": "^2.3.4"
   },
   "dependencies": {
-    "request": "~2"
+    "request": "^2.67.0"
   },
   "engines": {
     "node": ">=4.0.0",
