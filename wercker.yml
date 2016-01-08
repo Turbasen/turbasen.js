@@ -1,4 +1,4 @@
-box: iojs:1
+box: node:argon
 build:
   steps:
     - script:
