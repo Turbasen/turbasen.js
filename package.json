@@ -1,12 +1,13 @@
 {
   "name": "turbasen",
-  "version": "1.1.1",
+  "version": null,
   "description": "Node.JS-client for Nasjonal Turbase",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js test.js",
-    "test": "mocha -R tap test.js",
-    "watch": "mocha -w -R progress test.js"
+    "test": "mocha -c --check-leaks -R tap test.js",
+    "watch": "mocha -w -b -c --check-leaks -R progress test.js",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,8 @@
   "devDependencies": {
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^3.1.0",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "semantic-release": "^4.3.5"
   },
   "dependencies": {
     "each-async": "^1.1.1",
