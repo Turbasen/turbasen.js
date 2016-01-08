@@ -18,6 +18,7 @@ module.exports._requestDefaults = function() {
 };
 
 var request = module.exports._requestDefaults();
+var eachAsync = require('each-async');
 
 [
   'aktiviteter',
@@ -30,6 +31,24 @@ var request = module.exports._requestDefaults();
   module.exports[type] = function(params, callback) {
     if (!callback) { return request.get({url: encodeURIComponent(type), qs: params}); }
     request.get({url: encodeURIComponent(type), qs: params}, callback);
+  };
+
+  module.exports[type].each = function(params, callback, done) {
+    params.skip = params.skip || 0;
+    params.limit = params.limit || 50;
+
+    module.exports[type](params, function(err, res, body) {
+      eachAsync(body.documents, callback, function(err) {
+        if (err) { return done(err); }
+
+        if (body.documents < params.limit) {
+          return done(null);
+        }
+
+        params.skip += params.limit;
+        module.exports[type].each(params, callback, done);
+      });
+    });
   };
 
   module.exports[type].post = function(data, callback) {

@@ -86,6 +86,20 @@ turbasen.områder(query, function(err, res, body) {
 });
 ```
 
+#### Each Object
+
+Asyncronously featch each object for a given query.
+
+```js
+function each(item, index, next) {
+  // do something async with the item
+  next();
+};
+
+turbasen.områder.each(query, each, function(err) {
+  // we are done!
+});
+
 ### Create Object
 
 ```js
