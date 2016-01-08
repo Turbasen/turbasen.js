@@ -54,11 +54,32 @@ describe('api', function() {
       'turer'
     ].forEach(function(type) {
       assert.equal(typeof turbasen[type], 'function');
+      assert.equal(typeof turbasen[type].each, 'function');
       assert.equal(typeof turbasen[type].post, 'function');
       assert.equal(typeof turbasen[type].get, 'function');
       assert.equal(typeof turbasen[type].delete, 'function');
       assert.equal(typeof turbasen[type].put, 'function');
       assert.equal(typeof turbasen[type].patch, 'function');
+    });
+  });
+
+  it('exposes each document itterator function', function(done) {
+    this.timeout(10000);
+
+    var counter = 0;
+    var opts = {
+      tags: 'Bretur',
+      limit: 10
+    };
+
+    turbasen.turer.each(opts, function(item, index, next) {
+      counter++;
+      process.nextTick(next);
+    }, function(err) {
+      assert.ifError(err);
+      assert.equal(counter, 46);
+
+      done();
     });
   });
 });
