@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Turbasen/turbasen.js.git"
+    "url": "git+https://github.com/Turbasen/turbasen.js.git"
   },
   "keywords": [
     "DNT",
