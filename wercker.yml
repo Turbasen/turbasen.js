@@ -1,4 +1,4 @@
-box: iojs:1
+box: node:argon
 build:
   steps:
     - script:
@@ -15,9 +15,9 @@ build:
     - npm-install
 
     - script:
-        name: jshint
+        name: lint
         code: |
-            npm run hint
+            npm run lint
 
     - npm-test
 
