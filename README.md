@@ -10,8 +10,7 @@ Node.JS-client for [Nasjonal Turbase](http://www.nasjonalturbase.no).
 
 ## Requirements
 
-* Node.JS >= v0.10
-* io.js >= v1.0.0
+* Node.JS >= v4.0.0
 
 ## Install
 
