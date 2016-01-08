@@ -98,6 +98,7 @@ function each(item, index, next) {
 turbasen.områder.each(query, each, function(err) {
   // we are done!
 });
+```
 
 ### Create Object
 
