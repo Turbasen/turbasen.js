@@ -68,6 +68,7 @@ describe('api', function describe() {
 
     let counter = 0;
     const opts = {
+      status: 'Offentlig',
       tags: 'Bretur',
       limit: 10,
     };
@@ -77,7 +78,7 @@ describe('api', function describe() {
       process.nextTick(next);
     }, function eachDone(err) {
       assert.ifError(err);
-      assert.equal(counter, 46);
+      assert.equal(counter, 30);
 
       done();
     });
