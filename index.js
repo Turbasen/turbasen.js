@@ -138,7 +138,7 @@ module.exports.util.attribution = function navngiving(type, doc, authors, licens
   } else if (typeof authors === 'string') {
     attribution = attribution + authors;
   } else {
-    attribution = attribution + 'Ukjent'
+    attribution = attribution + 'Ukjent';
   }
 
   if (licenses.has(license)) {
