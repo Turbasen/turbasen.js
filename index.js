@@ -143,7 +143,7 @@ module.exports.util.attribution = function navngiving(type, doc, authors, licens
 
   if (licenses.has(license)) {
     return attribution + ` er lisensiert under <a href="${licenses.get(license)}">${license}</a>.`;
-  } else {
-    return attribution + ` er lisensiert under ${license}.`;
   }
+
+  return attribution + ` er lisensiert under ${license}.`;
 };
