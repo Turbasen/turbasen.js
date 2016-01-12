@@ -107,3 +107,43 @@ module.exports.configure = function configure(obj) {
   // Generate a new request object
   request = module.exports._requestDefaults();
 };
+
+module.exports.util = {};
+
+module.exports.util.attribution = function navngiving(type, doc, authors, license) {
+  const licenses = new Map([
+    ['CC BY 4.0', 'http://creativecommons.org/licenses/by/4.0/deed.no'],
+    ['CC BY-SA 4.0', 'http://creativecommons.org/licenses/by-sa/4.0/deed.no'],
+    ['CC BY-ND 4.0', 'http://creativecommons.org/licenses/by-nd/4.0/deed.no'],
+    ['CC BY-NC 4.0', 'http://creativecommons.org/licenses/by-nc/4.0/deed.no'],
+    ['CC BY-NC-SA 4.0', 'http://creativecommons.org/licenses/by-nc-sa/4.0/deed.no'],
+    ['CC BY-NC-ND 4.0', 'http://creativecommons.org/licenses/by-nc-nd/4.0/deed.no'],
+  ]);
+
+  const docName = doc.navn ? doc.navn : 'Uten Navn';
+  const docUrl = `http://www.ut.no/${type}/${doc._id}/`;
+
+  let attribution = `"<a href="${docUrl}">${docName}</a>" av `;
+
+  if (authors && authors instanceof Array) {
+    attribution = attribution + authors.reduce((prev, author, i, a) => {
+      const delim = prev === '' ? '' : (i < a.length - 1 ? ', ' : ' og ');
+
+      if (author.url) {
+        return prev + delim + `<a href="${author.url}">${author.navn}</a>`;
+      } else {
+        return prev + delim + author.navn;
+      }
+    }, '');
+  } else if (typeof authors === 'string') {
+    attribution = attribution + authors;
+  } else {
+    attribution = attribution + 'Ukjent'
+  }
+
+  if (licenses.has(license)) {
+    return attribution + ` er lisensiert under <a href="${licenses.get(license)}">${license}</a>.`;
+  } else {
+    return attribution + ` er lisensiert under ${license}.`;
+  }
+};

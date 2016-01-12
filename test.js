@@ -98,3 +98,79 @@ describe('near.js', function describe() {
     });
   });
 });
+
+describe('util.attribution()', function describe() {
+  let type, doc, authors, license;
+
+  beforeEach(function beforeEach() {
+    type = 'tur';
+
+    doc = { _id: 'abc', navn: 'Foo Bar' };
+
+    authors = [
+      { navn: 'Foo', url: 'http://foo.bar' },
+    ];
+
+    license = 'CC BY-SA 4.0';
+  });
+
+  it('returns attribution for single author group', function it() {
+    assert.equal(turbasen.util.attribution(type, doc, authors, license), [
+      '"<a href="http://www.ut.no/tur/abc/">Foo Bar</a>"',
+      'av <a href="http://foo.bar">Foo</a>',
+      'er lisensiert under <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.no">CC BY-SA 4.0</a>.',
+    ].join(' '));
+  });
+
+  it('returns attribution for multiple author groups', function it() {
+    authors.push({ navn: 'Bar', url: 'http://bar.foo' });
+
+    assert.equal(turbasen.util.attribution(type, doc, authors, license), [
+      '"<a href="http://www.ut.no/tur/abc/">Foo Bar</a>"',
+      'av <a href="http://foo.bar">Foo</a> og <a href="http://bar.foo">Bar</a>',
+      'er lisensiert under <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.no">CC BY-SA 4.0</a>.',
+    ].join(' '));
+
+    authors.push({ navn: 'Baz', url: 'http://baz.foo' });
+
+    assert.equal(turbasen.util.attribution(type, doc, authors, license), [
+      '"<a href="http://www.ut.no/tur/abc/">Foo Bar</a>"',
+      'av <a href="http://foo.bar">Foo</a>, <a href="http://bar.foo">Bar</a> og <a href="http://baz.foo">Baz</a>',
+      'er lisensiert under <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.no">CC BY-SA 4.0</a>.',
+    ].join(' '));
+  });
+
+  it('returns attribution for named author', function it() {
+    assert.equal(turbasen.util.attribution(type, doc, 'Foo', license), [
+      '"<a href="http://www.ut.no/tur/abc/">Foo Bar</a>"',
+      'av Foo',
+      'er lisensiert under <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.no">CC BY-SA 4.0</a>.',
+    ].join(' '));
+  });
+
+  it('returns attribution for no author', function it() {
+    assert.equal(turbasen.util.attribution(type, doc, undefined, license), [
+      '"<a href="http://www.ut.no/tur/abc/">Foo Bar</a>"',
+      'av Ukjent',
+      'er lisensiert under <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.no">CC BY-SA 4.0</a>.',
+    ].join(' '));
+  });
+
+  it('returns attribution for untitled document', function it() {
+    doc.navn = undefined;
+
+    assert.equal(turbasen.util.attribution(type, doc, authors, license), [
+      '"<a href="http://www.ut.no/tur/abc/">Uten Navn</a>"',
+      'av <a href="http://foo.bar">Foo</a>',
+      'er lisensiert under <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.no">CC BY-SA 4.0</a>.',
+    ].join(' '));
+  });
+
+  it('returns attribution for unknown license', function it() {
+    assert.equal(turbasen.util.attribution(type, doc, authors, 'CC BY-NC-ND 3.0 NO'), [
+      '"<a href="http://www.ut.no/tur/abc/">Foo Bar</a>"',
+      'av <a href="http://foo.bar">Foo</a>',
+      'er lisensiert under CC BY-NC-ND 3.0 NO.',
+    ].join(' '));
+  });
+});
