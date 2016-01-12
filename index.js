@@ -127,7 +127,13 @@ module.exports.util.attribution = function navngiving(type, doc, authors, licens
 
   if (authors && authors instanceof Array) {
     attribution = attribution + authors.reduce((prev, author, i, a) => {
-      const delim = prev === '' ? '' : (i < a.length - 1 ? ', ' : ' og ');
+      let delim;
+
+      if (prev) {
+        delim = i < a.length - 1 ? ', ' : ' og ';
+      } else {
+        delim = '';
+      }
 
       if (author.url) {
         return prev + delim + `<a href="${author.url}">${author.navn}</a>`;
