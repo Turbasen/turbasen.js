@@ -100,7 +100,10 @@ describe('near.js', function describe() {
 });
 
 describe('util.attribution()', function describe() {
-  let type, doc, authors, license;
+  let type;
+  let doc;
+  let authors;
+  let license;
 
   beforeEach(function beforeEach() {
     type = 'tur';
