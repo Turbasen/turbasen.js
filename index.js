@@ -131,9 +131,9 @@ module.exports.util.attribution = function navngiving(type, doc, authors, licens
 
       if (author.url) {
         return prev + delim + `<a href="${author.url}">${author.navn}</a>`;
-      } else {
-        return prev + delim + author.navn;
       }
+
+      return prev + delim + author.navn;
     }, '');
   } else if (typeof authors === 'string') {
     attribution = attribution + authors;
