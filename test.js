@@ -73,7 +73,7 @@ describe('api', function describe() {
       limit: 10,
     };
 
-    turbasen.turer.each(opts, function eachItem(item, index, next) {
+    turbasen.turer.each(opts, function eachItem(item, next) {
       counter++;
       process.nextTick(next);
     }, function eachDone(err) {

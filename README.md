@@ -90,7 +90,7 @@ turbasen.områder(query, function(err, res, body) {
 Asyncronously featch each object for a given query.
 
 ```js
-function each(item, index, next) {
+function each(item, next) {
   // do something async with the item
   next();
 };
