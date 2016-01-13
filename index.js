@@ -41,6 +41,7 @@ let request = module.exports._requestDefaults();
 
     query.skip = query.skip || 0;
     query.limit = query.limit || 50;
+    query.sort = query.sort || '_id';
 
     module.exports[type](query, function typeCb(typeErr, res, body) {
       if (typeErr) { return done(typeErr); }
