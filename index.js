@@ -53,7 +53,10 @@ let request = module.exports._requestDefaults();
           return done(null);
         }
 
-        query.skip += query.limit;
+        if (!query.__no_skip__) {
+          query.skip += query.limit;
+        }
+
         module.exports[type].each(query, callback, done);
       });
     });
