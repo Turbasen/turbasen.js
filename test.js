@@ -99,11 +99,11 @@ describe('steder-near.js', function describe() {
   });
 });
 
-describe('grupper.js', function describe() {
-  it('reutrns a Map of groups with names and url', function it(done) {
+describe('grupper-cache.js', function describe() {
+  it('reutrns a Map of all groups with name and url', function it(done) {
     this.timeout(15000);
 
-    const grupper = require('./examples/grupper');
+    const grupper = require('./examples/grupper-cache');
 
     grupper({}, (err, groups) => {
       assert.ifError(err);
