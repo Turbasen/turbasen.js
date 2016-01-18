@@ -99,6 +99,27 @@ describe('near.js', function describe() {
   });
 });
 
+describe('grupper.js', function describe() {
+  it('reutrns a Map of groups with names and url', function it(done) {
+    this.timeout(15000);
+
+    const grupper = require('./examples/grupper');
+
+    grupper({}, (err, groups) => {
+      assert.ifError(err);
+
+      for (const g of groups) {
+        assert.equal(typeof g[0], 'string');
+        assert.equal(typeof g[1], 'object');
+        assert.equal(typeof g[1].navn, 'string');
+        assert.equal(typeof g[1].url, 'string');
+      }
+
+      done();
+    });
+  });
+});
+
 describe('util.attribution()', function describe() {
   let type;
   let doc;
