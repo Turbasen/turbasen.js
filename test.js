@@ -120,6 +120,14 @@ describe('grupper.js', function describe() {
   });
 });
 
+describe('trip-title-with-year.js', function describe() {
+  it('returns trips with year in the title', function it(done) {
+    require('./examples/trip-title-with-year').on('data', data => {
+      assert(/201[0-9]/.test(data.navn));
+    }).on('done', done);
+  });
+});
+
 describe('util.attribution()', function describe() {
   let type;
   let doc;
