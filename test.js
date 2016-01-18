@@ -85,9 +85,9 @@ describe('api', function describe() {
   });
 });
 
-describe('near.js', function describe() {
+describe('steder-near.js', function describe() {
   it('returns cabins near coornidate', function it(done) {
-    require('./examples/near').on('data', function on(data) {
+    require('./examples/steder-near').on('data', function on(data) {
       assert.equal(data.documents[0].navn, 'Selhamar');
       assert.equal(data.documents[1].navn, 'Åsedalen');
       assert.equal(data.documents[2].navn, 'Torvedalshytta');
