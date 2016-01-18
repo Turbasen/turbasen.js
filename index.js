@@ -43,7 +43,7 @@ let request = module.exports._requestDefaults();
     query.limit = query.limit || 50;
     query.sort = query.sort || '_id';
 
-    const __no_skip__ = !!query.__no_skip__;
+    const noSkip = !!query.__no_skip__;
     delete query.__no_skip__;
 
     module.exports[type](query, function typeCb(typeErr, res, body) {
@@ -56,7 +56,7 @@ let request = module.exports._requestDefaults();
           return done(null);
         }
 
-        if (!__no_skip__) {
+        if (!noSkip) {
           query.skip += query.limit;
         }
 
