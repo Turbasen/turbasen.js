@@ -1,6 +1,6 @@
 'use strict';
 
-const eachAsync = require('async-each-series');
+const eachAsync = require('async-each-map');
 
 module.exports.conf = {
   API_KEY: process.env.NTB_API_KEY,
