@@ -10,7 +10,7 @@ module.exports.conf = {
 
 module.exports._requestDefaults = function reqestDefaults() {
   return require('request').defaults({
-    baseUrl: 'http://' + module.exports.conf.API_ENV + '.nasjonalturbase.no/',
+    baseUrl: `http://${module.exports.conf.API_ENV}.nasjonalturbase.no/`,
     headers: {
       'user-agent': module.exports.conf.USER_AGENT,
     },
@@ -75,34 +75,34 @@ let request = module.exports._requestDefaults();
 
   module.exports[type].get = function typeGet(id, callback) {
     if (!callback) {
-      return request.get({ url: encodeURIComponent(type) + '/' + id });
+      return request.get({ url: `${encodeURIComponent(type)}/${id}` });
     }
 
-    request.get({ url: encodeURIComponent(type) + '/' + id }, callback);
+    request.get({ url: `${encodeURIComponent(type)}/${id}` }, callback);
   };
 
   module.exports[type].delete = function typeDelete(id, callback) {
     if (!callback) {
-      return request.del({ url: encodeURIComponent(type) + '/' + id });
+      return request.del({ url: `${encodeURIComponent(type)}/${id}` });
     }
 
-    request.del({ url: encodeURIComponent(type) + '/' + id }, callback);
+    request.del({ url: `${encodeURIComponent(type)}/${id}` }, callback);
   };
 
   module.exports[type].put = function typePut(id, data, callback) {
     if (!callback) {
-      return request.put({ url: encodeURIComponent(type) + '/' + id, body: data });
+      return request.put({ url: `${encodeURIComponent(type)}/${id}`, body: data });
     }
 
-    request.put({ url: encodeURIComponent(type) + '/' + id, body: data }, callback);
+    request.put({ url: `${encodeURIComponent(type)}/${id}`, body: data }, callback);
   };
 
   module.exports[type].patch = function typePatch(id, data, callback) {
     if (!callback) {
-      return request.patch({ url: encodeURIComponent(type) + '/' + id, body: data });
+      return request.patch({ url: `${encodeURIComponent(type)}/${id}`, body: data });
     }
 
-    request.patch({ url: encodeURIComponent(type) + '/' + id, body: data }, callback);
+    request.patch({ url: `${encodeURIComponent(type)}/${id}`, body: data }, callback);
   };
 });
 
@@ -143,7 +143,7 @@ module.exports.util.attribution = function navngiving(type, doc, authors, licens
       }
 
       if (author.url) {
-        return prev + delim + `<a href="${author.url}">${author.navn}</a>`;
+        return `${prev}${delim}<a href="${author.url}">${author.navn}</a>`;
       }
 
       return prev + delim + author.navn;
@@ -151,12 +151,12 @@ module.exports.util.attribution = function navngiving(type, doc, authors, licens
   } else if (typeof authors === 'string') {
     attribution = attribution + authors;
   } else {
-    attribution = attribution + 'Ukjent';
+    attribution = `${attribution}Ukjent`;
   }
 
   if (licenses.has(license)) {
-    return attribution + ` er lisensiert under <a href="${licenses.get(license)}">${license}</a>.`;
+    return `${attribution} er lisensiert under <a href="${licenses.get(license)}">${license}</a>.`;
   }
 
-  return attribution + ` er lisensiert under ${license}.`;
+  return `${attribution} er lisensiert under ${license}.`;
 };
