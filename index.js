@@ -30,7 +30,7 @@ let request = module.exports._requestDefaults();
   'områder',
   'steder',
   'turer',
-].forEach(function typeForEach(type) {
+].forEach(type => {
   module.exports[type] = function typeAll(params, callback) {
     if (!callback) { return request.get({ url: encodeURIComponent(type), qs: params }); }
     request.get({ url: encodeURIComponent(type), qs: params }, callback);
@@ -46,10 +46,10 @@ let request = module.exports._requestDefaults();
     const noSkip = !!query.__no_skip__;
     delete query.__no_skip__;
 
-    module.exports[type](query, function typeCb(typeErr, res, body) {
+    module.exports[type](query, (typeErr, res, body) => {
       if (typeErr) { return done(typeErr); }
 
-      eachAsync(body.documents, callback, function eachAsyncDone(eachErr) {
+      eachAsync(body.documents, callback, eachErr => {
         if (eachErr) { return done(eachErr); }
 
         if (body.documents < query.limit) {
@@ -107,9 +107,7 @@ let request = module.exports._requestDefaults();
 });
 
 module.exports.configure = function configure(obj) {
-  Object.keys(obj).forEach(function objKeysForEach(key) {
-    module.exports.conf[key] = obj[key];
-  });
+  Object.keys(obj).forEach(key => module.exports.conf[key] = obj[key]);
 
   // Generate a new request object
   request = module.exports._requestDefaults();
