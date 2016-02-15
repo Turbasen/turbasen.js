@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Turbasen/turbasen.js.git"
+    "url": "git+https://github.com/Turbasen/node-turbasen-auth.git"
   },
   "keywords": [
     "DNT",
@@ -28,10 +28,14 @@
   },
   "homepage": "https://github.com/Turbasen/turbasen.js",
   "devDependencies": {
+    "comma-separated-values": "^3.6.4",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^4.0.0",
     "mocha": "^2.3.4",
-    "semantic-release": "^4.3.5"
+    "nomnom": "^1.8.1",
+    "passord": "^1.1.0",
+    "semantic-release": "^4.3.5",
+    "turbasen-auth": "^1.2.3"
   },
   "dependencies": {
     "async-each-map": "^1.0.1",
