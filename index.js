@@ -30,10 +30,10 @@ let request = module.exports._requestDefaults();
   'områder',
   'steder',
   'turer',
-].forEach(type => {
+].forEach((type) => {
   module.exports[type] = function typeAll(params, callback) {
     if (!callback) { return request.get({ url: encodeURIComponent(type), qs: params }); }
-    request.get({ url: encodeURIComponent(type), qs: params }, callback);
+    return request.get({ url: encodeURIComponent(type), qs: params }, callback);
   };
 
   module.exports[type].each = function typeEach(params, callback, done) {
@@ -49,7 +49,7 @@ let request = module.exports._requestDefaults();
     module.exports[type](query, (typeErr, res, body) => {
       if (typeErr) { return done(typeErr); }
 
-      eachAsync(body.documents, callback, eachErr => {
+      return eachAsync(body.documents, callback, (eachErr) => {
         if (eachErr) { return done(eachErr); }
 
         if (body.documents < query.limit) {
@@ -60,7 +60,7 @@ let request = module.exports._requestDefaults();
           query.skip += query.limit;
         }
 
-        module.exports[type].each(query, callback, done);
+        return module.exports[type].each(query, callback, done);
       });
     });
   };
@@ -70,7 +70,7 @@ let request = module.exports._requestDefaults();
       return request.post({ url: encodeURIComponent(type), body: data });
     }
 
-    request.post({ url: encodeURIComponent(type), body: data }, callback);
+    return request.post({ url: encodeURIComponent(type), body: data }, callback);
   };
 
   module.exports[type].get = function typeGet(id, callback) {
@@ -78,7 +78,7 @@ let request = module.exports._requestDefaults();
       return request.get({ url: `${encodeURIComponent(type)}/${id}` });
     }
 
-    request.get({ url: `${encodeURIComponent(type)}/${id}` }, callback);
+    return request.get({ url: `${encodeURIComponent(type)}/${id}` }, callback);
   };
 
   module.exports[type].delete = function typeDelete(id, callback) {
@@ -86,7 +86,7 @@ let request = module.exports._requestDefaults();
       return request.del({ url: `${encodeURIComponent(type)}/${id}` });
     }
 
-    request.del({ url: `${encodeURIComponent(type)}/${id}` }, callback);
+    return request.del({ url: `${encodeURIComponent(type)}/${id}` }, callback);
   };
 
   module.exports[type].put = function typePut(id, data, callback) {
@@ -94,7 +94,7 @@ let request = module.exports._requestDefaults();
       return request.put({ url: `${encodeURIComponent(type)}/${id}`, body: data });
     }
 
-    request.put({ url: `${encodeURIComponent(type)}/${id}`, body: data }, callback);
+    return request.put({ url: `${encodeURIComponent(type)}/${id}`, body: data }, callback);
   };
 
   module.exports[type].patch = function typePatch(id, data, callback) {
@@ -102,12 +102,14 @@ let request = module.exports._requestDefaults();
       return request.patch({ url: `${encodeURIComponent(type)}/${id}`, body: data });
     }
 
-    request.patch({ url: `${encodeURIComponent(type)}/${id}`, body: data }, callback);
+    return request.patch({ url: `${encodeURIComponent(type)}/${id}`, body: data }, callback);
   };
 });
 
 module.exports.configure = function configure(obj) {
-  Object.keys(obj).forEach(key => module.exports.conf[key] = obj[key]);
+  Object.keys(obj).forEach((key) => {
+    module.exports.conf[key] = obj[key];
+  });
 
   // Generate a new request object
   request = module.exports._requestDefaults();
