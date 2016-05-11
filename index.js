@@ -10,6 +10,7 @@ module.exports.conf = {
 
 module.exports._requestDefaults = function reqestDefaults() {
   return require('request').defaults({
+    followAllRedirects: true,
     baseUrl: `http://${module.exports.conf.API_ENV}.nasjonalturbase.no/`,
     headers: {
       'user-agent': module.exports.conf.USER_AGENT,
