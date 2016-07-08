@@ -123,8 +123,23 @@ describe('grupper-cache.js', function describe() {
 
 describe('turer-title-with-year.js', function describe() {
   it('returns trips with year in the title', function it(done) {
+    this.timeout(15000);
+
     require('./examples/turer-title-with-year').on('data', data => {
       assert(/201[0-9]/.test(data.navn));
+    }).on('done', done);
+  });
+});
+
+describe('municipality-users.js', function describe() {
+  it('returns trips created by municipality users', function it(done) {
+    this.timeout(15000);
+
+    require('./examples/municipality-users').on('data', tur => {
+      assert(
+        /kommune/.test(tur.privat.opprettet_av.epost) ||
+        /kommune/.test(tur.privat.endret_av.epost)
+      );
     }).on('done', done);
   });
 });
