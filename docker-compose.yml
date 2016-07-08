@@ -1,10 +1,17 @@
-dev:
-  image: node:argon
-  working_dir: /usr/src/app
-  volumes:
-    - ".:/usr/src/app"
-  command: "npm run watch"
-  env_file: .env
-  environment:
-    - NTB_API_ENV=dev
-    - NTB_USER_AGENT=turbasen.js/alpha
+version: '2'
+
+services:
+  node:
+    image: node:argon
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    env_file: .env
+    environment:
+      - NODE_ENV=development
+      - NPM_CONFIG_LOGLEVEL=silent
+      - NPM_CONFIG_PROGRESS=false
+      - NPM_CONFIG_SPIN=false
+      - NTB_API_ENV=dev
+      - NTB_USER_AGENT=turbasen.js/alpha
+    command: npm run test:watch
