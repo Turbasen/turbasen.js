@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/Turbasen/turbasen.js#readme",
   "devDependencies": {
-    "eslint": "^2.4.0",
+    "eslint": "^3.10.2",
     "eslint-config-airbnb": "^6.1.0",
     "mocha": "^2.3.4",
     "semantic-release": "^4.3.5"
